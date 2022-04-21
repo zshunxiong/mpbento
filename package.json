@@ -1,0 +1,41 @@
+{
+  "name": "vue-express",
+  "version": "1.0.0",
+  "description": "vue + express + mysql",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "vite & node server.js",
+    "build": "vite build",
+    "watch": "vite build --watch & nodemon --ignore app/vue --delay 200ms server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "15.4"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.19.0",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.4.0",
+    "@vitejs/plugin-vue": "^2.3.1",
+    "autoprefixer": "^10.4.4",
+    "axios": "^0.21.1",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24",
+    "vite": "^2.9.2",
+    "vite-plugin-pwa": "^0.11.13",
+    "vue-router": "^4.0.6",
+    "vuex": "^4.0.0",
+    "workbox-precaching": "^6.5.3"
+  }
+}
