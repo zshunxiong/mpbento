@@ -5,9 +5,8 @@ import axios from 'axios';
 // import Dialog from './components/molecules/Dialog';
 
 //定義 axios 中間層，預處理、錯誤、載入中畫面
-// axios.defaults.baseURL = 'https://qa-parking-pls3.program.com.tw/api/';
-axios.defaults.baseURL = '/api/';
-
+const API_URL = import.meta.env.DEV ? 'http://localhost:8080' : '';
+axios.defaults.baseURL = API_URL + '/API/';
 axios.defaults.headers['Content-Type'] = 'application/json';
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers['Accept'] = 'application/json';
