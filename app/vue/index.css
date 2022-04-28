@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(90deg, rgba(250,120,154,0.15) 0%, rgba(244,169,134,0.15) 35%, rgba(254,238,64,0.15) 100%);
+}
+
+@media print {
+  body * {
+    @apply invisible;
+  }
+
+  body .printArea {
+    @apply visible block whitespace-pre absolute top-2 left-2 text-xl;
+  }
+}

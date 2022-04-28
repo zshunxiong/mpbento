@@ -27,8 +27,8 @@ export default defineConfig(({ command, mode }) => {
           globPatterns: ['**/*.{js,css,html,png}'],
         },
         manifest: {
-          name: "PWA_Vite_Tailwind",
-          short_name: "PWA模板",
+          name: "MP便當v2.0",
+          short_name: "MP便當",
           theme_color: "#ffffff",
           start_url: base,
           display: "standalone",

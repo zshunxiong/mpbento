@@ -27,28 +27,28 @@
       </div>
     </form>
 
-    <button
+    <Button
       class="badge badge-primary mr-2"
       v-if="currentTutorial.published"
       @click="updatePublished(false)"
     >
       UnPublish
-    </button>
-    <button
+    </Button>
+    <Button
       v-else
       class="badge badge-primary mr-2"
       @click="updatePublished(true)"
     >
       Publish
-    </button>
+    </Button>
 
-    <button class="badge badge-danger mr-2" @click="deleteTutorial">
+    <Button class="badge badge-danger mr-2" @click="deleteTutorial">
       Delete
-    </button>
+    </Button>
 
-    <button type="submit" class="badge badge-success" @click="updateTutorial">
+    <Button type="submit" class="badge badge-success" @click="updateTutorial">
       Update
-    </button>
+    </Button>
     <p>{{ message }}</p>
   </div>
 
@@ -59,16 +59,21 @@
 </template>
 
 <script>
+import Button from "../atoms/Button.vue";
 import axios from "../../axios";
 
 export default {
   name: "tutorial",
+
+  components: { Button },
+
   data() {
     return {
       currentTutorial: null,
       message: "",
     };
   },
+
   methods: {
     getTutorial(id) {
       axios
