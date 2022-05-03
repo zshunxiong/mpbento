@@ -20,15 +20,27 @@ const db = require("./app/models");
 // });
 db.sequelize.sync();
 
-// Api route
-require("./app/routes")(app);
-
 // Vue index route
 const path = __dirname + '/app/html/';
 app.use(express.static(path));
-app.all('*', (req, res) => {
+// For every other path not under /api/*, serve /index.html
+app.get(new RegExp('^(?!' + '/api' + '(/|$))'), function (req, res) {
   res.sendFile(path + "index.html");
+});
+
+// Api route
+require("./app/routes")(app);
+
+// And now a 404 catch all.
+app.use(function (req, res, next) {
+  res.status(404).send(`Error 404: ${req.method} => ${req.path}`)
 })
+
+// And now for any exception.
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Error 500: Internal Server Error')
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
