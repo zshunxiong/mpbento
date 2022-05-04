@@ -9,5 +9,14 @@ module.exports = {
     min: 0,
     acquire: 30000,
     idle: 10000
-  }
+  },
+  dialectOptions: {
+    typeCast: function (field, next) { // for reading from database
+      if (field.type === 'DATETIME') {
+        return field.string()
+      }
+      return next()
+    },
+  },
+  timezone: '+08:00' // for writing to database
 };

@@ -2,12 +2,12 @@
 const Joi = require('joi');
 // 加密套件
 const bcrypt = require('bcrypt');
-const saltRounds = 5;
+const saltRounds = 10;
 // 資料庫引入
 const db = require("../models");
 const User = db.users;
 
-// 新增使用者 (注冊)
+// 注冊
 exports.register = async (req, res) => {
   // 資料格式防呆
   const data = req.body;
@@ -40,14 +40,14 @@ exports.register = async (req, res) => {
     .then(result => {
       res.send({
         retCode: 1,
-        retMsg: '注冊成功'
+        retMsg: '成功'
       });
     })
     .catch(err => {
+      console.log(err);
       res.status(500).send({
         retCode: 0,
-        retMsg: "資料庫錯誤",
-        retData: err
+        retMsg: "資料庫錯誤"
       });
     });
 };
@@ -76,7 +76,7 @@ exports.login = (req, res) => {
       if (result && bcrypt.compareSync(data.password, result.password))
         res.send({
           retCode: 1,
-          retMsg: '登入成功',
+          retMsg: '成功',
           retData: {
             name: result.name,
             account: result.account
@@ -89,10 +89,10 @@ exports.login = (req, res) => {
         });
     })
     .catch(err => {
+      console.log(err);
       res.status(500).send({
         retCode: 0,
-        retMsg: "資料庫錯誤",
-        retData: err
+        retMsg: "資料庫錯誤"
       });
     });
 };
